@@ -17,7 +17,6 @@ size_t append_log(loglevel_t loglevel, char **dst, const char *format, va_list a
 
 int main() {
     char *out = NULL;
-    // printf("%s", "Hello world!\n");
     mylog(INFO, &out, "%s: %d - 0x%4.04x\n", "LOGGER", 4654, 32126);
     mylog(INFO, &out, "second line': error code:%d - 0x%4.04x\n", 4654, 3);
     mylog(INFO, &out, "third line': message: %s\n", "TEST");
@@ -25,7 +24,6 @@ int main() {
     mylog(INFO, &out, "fifth line': %.2f%%, message: %s AZ UJ MEZEBEN AMELYNEK A SZAMA: %d\n", 0.75654 * 100.0, "CSIGA GOLT VAGY PONTOT SZEREZ", 9);
     printf("%s", out);
     free(out);
-    // printf("%s\n", loglevelTXT[INFO]);
     return 0;
 }
 
@@ -33,8 +31,6 @@ size_t append_log(loglevel_t loglevel, char **dst, const char *format, va_list a
     char *ref = *dst, *p = NULL, *tail;
     char *header = NULL;
     size_t len = 0, nlen = 0, hlen = 0;
-    // printf("%s [%d] - ", loglevelTXT[loglevel], loglevel);
-    // return 0;
     if (*dst == NULL) {
         // add timestamp and loglevel information
         hlen = snprintf(NULL, 0, "%s - ", loglevelTXT[loglevel]);
@@ -73,14 +69,12 @@ size_t append_log(loglevel_t loglevel, char **dst, const char *format, va_list a
       tail = (ref + len);
       memset(tail, 0, nlen);
       vsnprintf(tail, nlen, format, ap);
-      // vprintf(format, ap);
     }
 }
 
 void mylog(loglevel_t loglevel, char **dst, const char *fmt, ...) {
     va_list ap;
     va_start(ap, fmt);
-    // printf("loglevel: %d %s\n", loglevel, loglevelTXT[loglevel]);
     append_log(loglevel, dst, fmt, ap);
     va_end(ap);
 }
