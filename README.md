@@ -2,6 +2,25 @@
 
 I'm active user of [zlog](https://github.com/HardySimpson/zlog), which tool helped me in number of projects. It has an option to collect chunks of strings before put them all at once to the log output though, but I wanted to create my buffering stuff as I do prefer to use.
 
+<h2>Install</h2>
+
+Before you would like to play with the code, you need to install ***autotools*** utilities from your native port source - if its not already installed on your machine.
+Then you simply call ***./rebuild.sh*** small script, which will create **Makefile**s for building the library and test code of the program.
+
+```bash
+    % ./rebuild.sh
+```
+
+then
+
+```bash
+    % make install clean
+```
+
+The final code will be placed in the ***DIST_1.0*** subdirectory.
+
+<h2>Usage</h2>
+
 It is quite simple - see *[interface](src/README.md) docs* - as it collects chunks each time when the user calls the logger's main entry function - ***mylog***.
 ```c
     /**
