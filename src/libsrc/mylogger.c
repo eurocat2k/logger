@@ -68,36 +68,36 @@ void mylog_printf(FILE *dst, char *outstr) {
 }
 
 static char *gettimestamp() {
-	int r;
-	time_t t;
-	char *res, *p;
-	struct tm *tmp;
+    int r;
+    time_t t;
+    char *res, *p;
+    struct tm *tmp;
     size_t tslen = 0;
 
 #define BUFSIZE (64)
 #define LOG_STRFTIME  ("%F %T")
 
-	// In order to not waste space, the string is reallocated
-	// later on. strftime(3) returns how many bytes have been put
-	// into the buffer. If it does not fit into the buffer, it
-	// errors out.
-	if ((res = calloc(BUFSIZE, sizeof(char))) == NULL) {
+    // In order to not waste space, the string is reallocated
+    // later on. strftime(3) returns how many bytes have been put
+    // into the buffer. If it does not fit into the buffer, it
+    // errors out.
+    if ((res = calloc(BUFSIZE, sizeof(char))) == NULL) {
         perror("calloc failed at timstamp initial allocation");
         goto err;
     }
-	t = time(NULL);
-	tmp = localtime(&t);
-	if (tmp == NULL) {
-		perror("localtime(3)");
+    t = time(NULL);
+    tmp = localtime(&t);
+    if (tmp == NULL) {
+	perror("localtime(3)");
         SaferFree(res);
-		goto err;
-	}
-	r = strftime(res, BUFSIZE, LOG_STRFTIME, tmp);
-	if (r == 0) {
-		perror("strftime(3) failed");
-		SaferFree(res);
-		goto err;
-	}
+	goto err;
+    }
+    r = strftime(res, BUFSIZE, LOG_STRFTIME, tmp);
+    if (r == 0) {
+	perror("strftime(3) failed");
+	SaferFree(res);
+	goto err;
+    }
     tslen = strlen(res) + 1;
     if ((p = calloc(tslen, sizeof(char))) == NULL) {
         SaferFree(res);
