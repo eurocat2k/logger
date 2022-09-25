@@ -54,3 +54,15 @@ dkms.conf
 # automake 
 .deps/
 .libs/
+config.*
+install*
+libtool*
+ltmain*
+Makefile
+Makefile.in
+stamp*
+aclocal*
+compile*
+missing*
+autom4te.cache/
+DIST*/
