@@ -1,7 +1,7 @@
 
 # mylog interface
 
-###void mylog(loglevel_t level, char** output, const char* fmt, ...);
+<b>void mylog(loglevel_t level, char** output, const char* fmt, ...);</b>
 
 Variadic function.
 ```c
@@ -29,11 +29,11 @@ Variadic function.
 
 **...** argument list reference
 
-##Description
+<h2>Description</h2>
 
 The **mylog** allocates and reallocates output buffer - *referenced by char*** *output* - as new formatted strings added to the message pool.
 
-###void mylog_printf(FILE *stream, char *outstr);
+<b>void mylog_printf(FILE *stream, char *outstr);</b>
 ```c
     /**
      * @name   mylog_printf
@@ -49,7 +49,7 @@ The **mylog** allocates and reallocates output buffer - *referenced by char*** *
 
 **char*** outstr - the pool of accumulated output strings
 
-##Description
+<h2>Description</h2>
 
 **mylog_printf** puts the accumulated output messages pool contents to the **FILE*** referenced output stream, then frees up the allocated memory of the output pool.
 
