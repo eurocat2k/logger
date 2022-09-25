@@ -36,6 +36,7 @@ Variadic function.
 The **mylog** allocates and reallocates output buffer - *referenced by char*** *output* - as new formatted strings added to the message pool.
 
 <h3>void mylog_printf(FILE *stream, char *outstr);</h3>
+
 ```c
     /**
      * @name   mylog_printf
