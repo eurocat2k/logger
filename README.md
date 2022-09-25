@@ -1,6 +1,6 @@
 # Accumulated output for logger - like zlog - output
 
-I'm active user of [zlog](https://github.com/HardySimpson/zlog), which tool helped me number of projects. It has an option to collect chunks of strings before put them all at once to the log output though, but I wanted to create my buffering stuff as I do prefer to use.
+I'm active user of [zlog](https://github.com/HardySimpson/zlog), which tool helped me in number of projects. It has an option to collect chunks of strings before put them all at once to the log output though, but I wanted to create my buffering stuff as I do prefer to use.
 
 It is quite simple - see *[interface](src/README.md) docs* - as it collects chunks each time when the user calls the logger's main entry function - ***mylog***.
 ```c
