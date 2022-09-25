@@ -4,7 +4,7 @@ bin_PROGRAMS=loggerTest
 mydir=$(prefix)/DIST_@PACKAGE_VERSION@
 distlibdir=$(mydir)/lib
 
-loggerTest_SOURCES=main.c misc.c misc.h
+loggerTest_SOURCES=main.c
 loggerTest_CFLAGS=-g3 -I. -I$(top_srcdir) -I/usr/local/include -I../include
 loggerTest_LDFLAGS=-lc -lm
 # loggerTest_LDADD=$(top_srcdir)/lib/libmylogger.la

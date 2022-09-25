@@ -1,4 +1,9 @@
 #include "mylogger.h"
+#include "misc.h"
+
+size_t append_log(loglevel_t loglevel, char **dst, const char *format, va_list args);
+static char *gettimestamp();
+
 
 size_t append_log(loglevel_t loglevel, char **dst, const char *format, va_list ap) {
     size_t ret = -1, len, tlen;

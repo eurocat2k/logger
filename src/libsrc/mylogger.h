@@ -38,11 +38,20 @@ void mylog(loglevel_t loglevel, char **dst, const char *format, ...);
  * @retval None
  */
 void mylog_printf(FILE *dst, char *outstr);
-size_t append_log(loglevel_t loglevel, char **dst, const char *format, va_list args);
-static char *gettimestamp();
-
-void saferFree(void **pp);
+/**
+ * @name   SaferFree
+ * @note   frees HEAP allocated memory
+ * @param  void* p: pointer to the allocated memory block
+ * @retval None
+ */
 void SaferFree(void *p);
+/**
+ * @name   DumpHex
+ * @note   hexdump data with length
+ * @param  const void* data: buffer to be hexdumped
+ * @param  size_t size: the length of the buffer
+ * @retval None
+ */
 void DumpHex(const void* data, size_t size);
 
 #endif /* EAFCEC1E_78CA_4D81_A713_C5733A4FACA7 */
