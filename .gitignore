@@ -64,5 +64,6 @@ stamp*
 aclocal*
 compile*
 missing*
+depcomp*
 autom4te.cache/
 DIST*/
