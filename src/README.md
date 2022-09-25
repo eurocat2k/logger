@@ -4,6 +4,7 @@
 <h3>void mylog(loglevel_t level, char** output, const char* fmt, ...);</h3>
 
 Variadic function.
+
 ```c
     /**
      * @name   mylog
@@ -19,6 +20,7 @@ Variadic function.
 ```
 
 **loglevel_t** loglevel - INFO, DEBUG, WARNING, ERROR
+
 ```c
     typedef enum { INFO, DEBUG, WARNING, ERROR } loglevel_t;
 ```
