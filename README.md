@@ -9,6 +9,13 @@ Then you simply call ***./rebuild.sh*** small script, which will create **Makefi
 
 **: I intentionally left the <b><i>configure</i></b> script in the repo, to make it easy to regenerate ***Makefile***s*
 
+So, from now you can easy generate the Makefiles with **configure** script.
+
+```bash
+    % ./configure --prefix=<dist directory path>
+```
+
+
 ```bash
     % ./rebuild.sh
 ```
