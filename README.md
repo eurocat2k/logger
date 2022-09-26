@@ -28,7 +28,7 @@ Then you can build the entire package. *You can omit library build at first, but
     % ./rebuild.sh
 ```
 
-then
+then you can run **install** anytime.
 
 ```bash
     % make install clean
