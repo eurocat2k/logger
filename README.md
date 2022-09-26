@@ -14,7 +14,7 @@ So, from now you can easy generate the Makefiles with **configure** script.
 ```bash
     % ./configure --prefix=<dist directory path>
 ```
-The default mode of Makefile generations is the **autotools** supprted method, in this case you need to have those tools installed.
+The default mode of Makefile generations is the **autotools** supprted method, in this case you need to have those tools pre-installed.
 
 ```bash
     % ./rebuild.sh
