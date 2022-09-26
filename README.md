@@ -4,8 +4,10 @@ I'm active user of [zlog](https://github.com/HardySimpson/zlog), which tool help
 
 <h2>Install</h2>
 
-Before you would like to play with the code, you need to install ***autotools*** utilities from your native port source - if its not already installed on your machine.
+Before you would like to play with the code, you need to install ***autotools*** utilities from your native port source - if its not already installed on your machine.*
 Then you simply call ***./rebuild.sh*** small script, which will create **Makefile**s for building the library and test code of the program.
+
+**: I intentionally left the <b><i>configure</i></b> script in the repo, to make it easy to regenerate ***Makefile***s*
 
 ```bash
     % ./rebuild.sh
