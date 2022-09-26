@@ -8,8 +8,9 @@
 #include <stdint.h>
 #include <errno.h>
 #include <time.h>
+#include "/usr/local/include/zlog.h"
 
-typedef enum { INFO, DEBUG, WARNING, ERROR } loglevel_t;
+typedef enum { INFO, DEBUG, WARNING, ERROR, FATAL } loglevel_t;
 
 static const char *loglevelTXT[] = {
     "INFO", 
@@ -31,13 +32,31 @@ static const char *loglevelTXT[] = {
  */
 void mylog(loglevel_t loglevel, char **dst, const char *format, ...);
 /**
+ * @name   zlog_mylog
+ * @note   ollects log entries into the output buffer with timestamp and loglevel info
+ * @param  loglevel_t loglevel: deermine zlog output loglevel
+ * @param  char** dst: output buffer
+ * @param  char* fmt: printf like format string
+ * @retval None
+ */
+void zlog_mylog(loglevel_t loglevel, char **dst, const char *fmt, ...);
+/**
  * @name   mylog_printf
  * @note   sends output pool contents to the output stream
  * @param  FILE* dst: the output stream - stdout, stderr or any FILE* pointer
  * @param  char* outstr: the output pool with collected chunks of strings
  * @retval None
  */
-void mylog_printf(FILE *dst, char *outstr);
+void mylog_fprintf(FILE *dst, char *outstr);
+/**
+ * @name   mylog_zlog_printf
+ * @note   dumps output string to zlog interface - or if it's not defined, then put STDOUT by default
+ * @param  zlog_category_t *zc: zlog interface handler
+ * @param  loglevel_t loglevel: loglevel loglevel - enum type: 0 - INFO, 1 - DEBUG, 2 - WARNING, 3 - ERROR
+ * @param  char* outstr: output buffer
+ * @retval None
+ */
+void mylog_zlog_printf(void *c, loglevel_t loglevel, char *outstr);
 /**
  * @name   SaferFree
  * @note   frees HEAP allocated memory

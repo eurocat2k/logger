@@ -1,0 +1,6 @@
+2022-09-26 09:11:34.09s DEBUG  (my_cat:mylogger.c:mylog_zlog_printf:152) - LOGGER: 4654 - 0x7d7e
+                     second line: error code:4654 - 0x0003
+                     third line: message: TEST
+                     fourth line: 1.235400, message: TEST 8
+                     fifth line: 75.65%, message: CSIGA GOLT VAGY PONTOT SZEREZ AZ UJ MEZEBEN AMELYNEK A SZAMA: 9
+

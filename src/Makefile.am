@@ -19,6 +19,9 @@ distdir=$(prefix)/DIST_@PACKAGE_VERSION@
 #configdir=$(distdir)/etc
 #config_DATA=./etc/lrbconv.conf
 
+zlogdir=$(bindir)
+zlog_DATA=zlog.conf
+
 datadir=$(distdir)
 data_DATA=README.md
 
