@@ -22,6 +22,8 @@ The default mode of Makefile generations is the **autotools** supprted method, i
     % (cd ./src/libsrc && make install clean)
 ```
 
+Then you can build the entire package. *You can omit library build at first, but the install phase will fail. No problem, the Makefiles were generated, therefore you can continue with the prerequisited library build right now. Next time the build and install processes going to run without any dependency issues.*
+
 ```bash
     % ./rebuild.sh
 ```
@@ -32,7 +34,7 @@ then
     % make install clean
 ```
 
-The final code will be placed in the ***DIST_1.0*** subdirectory.
+The final code will be placed in the ***DIST_**** subdirectory.
 
 <h2>Usage</h2>
 
