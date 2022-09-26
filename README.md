@@ -16,6 +16,12 @@ So, from now you can easy generate the Makefiles with **configure** script.
 ```
 The default mode of Makefile generations is the **autotools** supprted method, in this case you need to have those tools pre-installed.
 
+<h3>Install library first!</h3>
+
+```bash
+    % (cd ./src/libsrc && make install clean)
+```
+
 ```bash
     % ./rebuild.sh
 ```
