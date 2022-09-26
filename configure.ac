@@ -2,7 +2,8 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT([logger], [1.0], [gabor.zelenak@me.com])
+# AC_INIT([logger], [1.0], [gabor.zelenak@me.com])
+AC_INIT([logger], m4_esyscmd([git tag -l | sort -V | tail -n 1 | tr -d '\n' | tee ./.version]), [gabor.zelenak@me.com])
 AC_CONFIG_SRCDIR([src/main.c])
 AC_CONFIG_HEADERS([config.h])
 AM_INIT_AUTOMAKE
