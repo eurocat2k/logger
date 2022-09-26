@@ -38,7 +38,7 @@ The final code will be placed in the ***DIST_**** subdirectory.
 
 <h2>Usage</h2>
 
-It is quite simple - see *[interface](src/README.md) docs* - as it collects chunks each time when the user calls the logger's main entry function - ***mylog***.
+It is quite simple - see *[interface](src/test/README.md) docs* - as it collects chunks each time when the user calls the logger's main entry function - ***mylog***.
 ```c
     /**
      * @name   mylog
