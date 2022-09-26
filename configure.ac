@@ -29,9 +29,9 @@ AC_TYPE_SIZE_T
 
 AC_CONFIG_FILES([
     Makefile
+    src/Makefile
     src/include/Makefile
     src/libsrc/Makefile
-    src/Makefile
     src/test/Makefile
 ])
 AC_OUTPUT

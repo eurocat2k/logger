@@ -6,16 +6,19 @@ mydir=$(prefix)/DIST_@PACKAGE_VERSION@
 distlibdir=$(mydir)/lib
 
 loggerTest_SOURCES=main.c
-loggerTest_CFLAGS=-g3 -I. -I$(top_srcdir) -I/usr/local/include -I../include
+loggerTest_CFLAGS=-g3 -I. -I$(top_srcdir) -I$(top_srcdir)/include -I/usr/local/include -I../include
 loggerTest_LDFLAGS=-lc -lm
-# loggerTest_LDADD=$(distlibdir)/libmylogger.la
-loggerTest_LDADD=$(distlibdir)/libmylogger.so
+loggerTest_LDADD=$(distlibdir)/libmylogger.la
+# loggerTest_LDADD=$(distlibdir)/libmylogger.so
 loggerTest_LDFLAGS+=-L/usr/lib -R/usr/lib -lpthread
 loggerTest_LDFLAGS+=-L/usr/local/lib -R/usr/local/lib -lzlog
-loggerTest_LDFLAGS+=-R$(distlibdir)/libmylogger.so
+# loggerTest_LDFLAGS+=-R$(distlibdir)/libmylogger.so
 
 bindir=$(prefix)/DIST_@PACKAGE_VERSION@/bin
+includedir=$(prefix)/DIST_@PACKAGE_VERSION@/include
+
 distdir=$(prefix)/DIST_@PACKAGE_VERSION@
+
 
 #configdir=$(distdir)/etc
 #config_DATA=./etc/lrbconv.conf
