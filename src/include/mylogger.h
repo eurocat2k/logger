@@ -16,7 +16,8 @@ static const char *loglevelTXT[] = {
     "INFO", 
     "DEBUG", 
     "WARNING", 
-    "ERROR"
+    "ERROR",
+    "FATAL"
 };
 
 #define LEAD_SPACES 21

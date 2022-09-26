@@ -1,3 +1,3 @@
 AUTOMAKE_OPTIONS=foreign
 AC_LOCAL_AM_FLAGS=-I m4 -g3 -O2
-SUBDIRS=src/libsrc src
+SUBDIRS=src/include src/libsrc src/test src 

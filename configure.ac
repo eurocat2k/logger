@@ -4,8 +4,8 @@
 AC_PREREQ([2.69])
 # AC_INIT([logger], [1.0], [gabor.zelenak@me.com])
 AC_INIT([logger], m4_esyscmd([git tag -l | sort -V | tail -n 1 | tr -d '\n' | tee ./.version]), [gabor.zelenak@me.com])
-AC_CONFIG_SRCDIR([src/main.c])
-AC_CONFIG_HEADERS([config.h])
+AC_CONFIG_SRCDIR([src/test/main.c])
+AC_CONFIG_HEADERS([src/test/config.h])
 AM_INIT_AUTOMAKE
 LT_INIT([dlopen])
 # Checks for programs.
@@ -29,7 +29,9 @@ AC_TYPE_SIZE_T
 
 AC_CONFIG_FILES([
     Makefile
+    src/include/Makefile
     src/libsrc/Makefile
     src/Makefile
+    src/test/Makefile
 ])
 AC_OUTPUT
