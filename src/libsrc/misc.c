@@ -2,7 +2,7 @@
 #include <math.h>
 #include <stdlib.h>
 
-void saferFree(void **pp)
+void safeFree(void **pp)
 {
     if (pp != NULL && *pp != NULL) {
         free(*pp);
@@ -11,9 +11,9 @@ void saferFree(void **pp)
     return;
 }
 
-void SaferFree(void *p)
+void SafeFree(void *p)
 {
-    saferFree((void **)&p);
+    safeFree((void **)&p);
 }
 
 void zhexdump(void const * data, unsigned int len)
@@ -31,41 +31,41 @@ void zhexdump(void const * data, unsigned int len)
     tmp = dmp;
     for (r = 0, i = 0; r < ((int)floor(len / 16) + (len % 16) != 0); r++, i += 16) {
         asprintf(&dmp, "%s| %04X |   ", dmp, i);
-        if (tmp != dmp) SaferFree(tmp);
+        if (tmp != dmp) SafeFree(tmp);
         tmp = dmp;
         for (c = i; c < i + 8; c++) {
             if (c < len) {
                 asprintf(&dmp,"%s%02X ", dmp, ((unsigned char const *)data)[c]);
                 if (tmp != dmp)
-                    SaferFree(tmp);
+                    SafeFree(tmp);
                 tmp = dmp;
             } else {
                 asprintf(&dmp,"%s   ", dmp);
                 if (tmp != dmp)
-                    SaferFree(tmp);
+                    SafeFree(tmp);
                 tmp = dmp;
             }
         }
         asprintf(&dmp,"%s  ", dmp);
         if (tmp != dmp)
-            SaferFree(tmp);
+            SafeFree(tmp);
         tmp = dmp;
         for (c = i + 8; c < i + 16; c++) {
             if (c < len) {
                 asprintf(&dmp,"%s%02X ", dmp, ((unsigned char const *)data)[c]);
                 if (tmp != dmp)
-                    SaferFree(tmp);
+                    SafeFree(tmp);
                 tmp = dmp;
             } else {
                 asprintf(&dmp,"%s   ", dmp);
                 if (tmp != dmp)
-                    SaferFree(tmp);
+                    SafeFree(tmp);
                 tmp = dmp;
             }
         }
         asprintf(&dmp,"%s   ", dmp);
         if (tmp != dmp)
-            SaferFree(tmp);
+            SafeFree(tmp);
         tmp = dmp;
         for (c = i; c < i + 16; c++) {
             ch = *(unsigned char *)(data + c);
@@ -73,33 +73,33 @@ void zhexdump(void const * data, unsigned int len)
                 if ((ch >= 32) && (ch < 127)) {
                     asprintf(&dmp, "%s%c", dmp, ch);
                     if (tmp != dmp)
-                        SaferFree(tmp);
+                        SafeFree(tmp);
                     tmp = dmp;
                 } else {
                     asprintf(&dmp, "%s%c", dmp, '.');
                     if (tmp != dmp)
-                        SaferFree(tmp);
+                        SafeFree(tmp);
                     tmp = dmp;
                 }
             } else {
                 asprintf(&dmp,"%s ", dmp);
                 if (tmp != dmp)
-                    SaferFree(tmp);
+                    SafeFree(tmp);
                 tmp = dmp;
             }
         }
         asprintf(&dmp,"%s |\n", dmp);
         if (tmp != dmp)
-            SaferFree(tmp);
+            SafeFree(tmp);
         tmp = dmp;
     }
     asprintf(&dmp, "%s%s", dmp, "+------+-------------------------------------------------------------------------+\n");
     if (tmp != dmp)
-        SaferFree(tmp);
+        SafeFree(tmp);
     tmp = dmp;
     // debug_debug("HEXDUMP\n%s", dmp);
     fprintf(stdout, "%s", dmp);
-    SaferFree(dmp);
+    SafeFree(dmp);
 }
 
 void DumpHex(const void* data, size_t size) {

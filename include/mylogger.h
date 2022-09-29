@@ -64,7 +64,7 @@ void mylog_zlog_printf(void *c, loglevel_t loglevel, char *outstr);
  * @param  void* p: pointer to the allocated memory block
  * @retval None
  */
-void SaferFree(void *p);
+void SafeFree(void *p);
 /**
  * @name   DumpHex
  * @note   hexdump data with length

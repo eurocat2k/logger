@@ -27,13 +27,13 @@ size_t append_log(loglevel_t loglevel, char **dst, const char *format, va_list a
             goto err;
         }
         snprintf(ref, llen, "%s: %s - ", tstamp, loglevelTXT[loglevel]);
-        SaferFree(tstamp);
+        SafeFree(tstamp);
         // append with first formatted string if any
         len = vsnprintf(NULL, 0, format, ap);
         len += 1;
         tlen = llen + len;
         if ((p = calloc(tlen, sizeof(char))) == NULL) {
-            SaferFree(ref);
+            SafeFree(ref);
             perror("calloc failed at first append");
             goto err;
         }
@@ -49,11 +49,11 @@ size_t append_log(loglevel_t loglevel, char **dst, const char *format, va_list a
         if (tlen <= MAX_BUFSIZ - 1) {
             p = calloc(tlen, sizeof(char));
             memmove(p, ref, llen);
-            SaferFree(ref);
+            SafeFree(ref);
         } else {
             p = calloc(MAX_BUFSIZ + 1, sizeof(char));
             memmove(p, ref, MAX_BUFSIZ);
-            SaferFree(ref);
+            SafeFree(ref);
             len -= tlen - MAX_BUFSIZ;   // truncate formatted string length not to excced MAX_BUFSIZ limit
         }
         for (char i = 0; i < LEAD_SPACES; i += 1) {
@@ -78,7 +78,7 @@ size_t append_zlog(char **dst, const char *format, va_list ap) {
         len += 1;
         tlen = len;
         if ((p = calloc(tlen, sizeof(char))) == NULL) {
-            SaferFree(ref);
+            SafeFree(ref);
             perror("calloc failed at first append");
             goto err;
         }
@@ -93,11 +93,11 @@ size_t append_zlog(char **dst, const char *format, va_list ap) {
         if (tlen <= MAX_BUFSIZ - 1) {
             p = calloc(tlen, sizeof(char));
             memmove(p, ref, llen);
-            SaferFree(ref);
+            SafeFree(ref);
         } else {
             p = calloc(MAX_BUFSIZ + 1, sizeof(char));
             memmove(p, ref, MAX_BUFSIZ);
-            SaferFree(ref);
+            SafeFree(ref);
             len -= tlen - MAX_BUFSIZ;   // truncate formatted string length not to excced MAX_BUFSIZ limit
         }
         for (char i = 0; i < LEAD_SPACES; i += 1) {
@@ -127,7 +127,7 @@ void zlog_mylog(loglevel_t loglevel, char **dst, const char *fmt, ...) {
 void mylog_fprintf(FILE *dst, char *outstr) {
     if (outstr) {
         fprintf(dst, "%.*s", (int)strlen(outstr), outstr);
-        SaferFree(outstr);
+        SafeFree(outstr);
     }
 }
 
@@ -138,7 +138,7 @@ void mylog_zlog_printf(void *c, loglevel_t loglevel, char *outstr) {
         // dump STDOUT
         if (NULL != outstr) {
             fprintf(stdout, "%.*s", (int)strlen(outstr), outstr);
-            SaferFree(outstr);
+            SafeFree(outstr);
         }
     } else {
         // zc is defined, and possible zlog_category_t pointer
@@ -162,7 +162,7 @@ void mylog_zlog_printf(void *c, loglevel_t loglevel, char *outstr) {
                 default:
                     break;
             }
-            SaferFree(outstr);
+            SafeFree(outstr);
         }
     }
 }
@@ -186,22 +186,22 @@ static char *gettimestamp() {
     tmp = localtime(&t);
     if (tmp == NULL) {
 	perror("localtime(3)");
-        SaferFree(res);
+        SafeFree(res);
 	goto err;
     }
     r = strftime(res, BUFSIZE, LOG_STRFTIME, tmp);
     if (r == 0) {
 	perror("strftime(3) failed");
-	SaferFree(res);
+	SafeFree(res);
 	goto err;
     }
     tslen = strlen(res) + 1;
     if ((p = calloc(tslen, sizeof(char))) == NULL) {
-        SaferFree(res);
+        SafeFree(res);
         goto err;
     }
     memmove(p, res, tslen);
-    SaferFree(res);
+    SafeFree(res);
     res = p;
 err:
     return res;
